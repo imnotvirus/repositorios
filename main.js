@@ -24,7 +24,7 @@ document.getElementById('enviar').addEventListener("click", (event) => {
       case 1:
         console.log("carregando");
         let out = "";
-        out += '<img src="8-1.gif" alt="loading"/>'
+        out += '<img src="http://www.ajaxload.info/cache/D2/2C/2C/00/00/00/8-1.gif" alt="loading"/>'
         document.querySelector(".header").innerHTML = out;
 
       case 4:
@@ -46,11 +46,9 @@ document.getElementById('enviar').addEventListener("click", (event) => {
 
 function mudaHeader() {
   var saida = ""
-  saida += '<a href="#">'
-  saida += "Repositorio's<span> .com</span>"
-  saida +='</a >'
+
   saida +='  <form action="">'
-  saida +='    <input id="user" type="text" placeholder="Usuario do github">'
+
   saida +='      <button id="enviar">resetar</button>'
   saida +='</form>'
   document.querySelector(".header").innerHTML = saida;
