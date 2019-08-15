@@ -20,9 +20,21 @@ document.getElementById('enviar').addEventListener("click", (event) => {
   var url = `https://api.github.com/users/${user}/repos?per_page=100`;
 
   xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      var myArr = JSON.parse(this.responseText);
-      myFunction(myArr);
+    switch (this.readyState) {
+      case 1:
+        console.log("carregando");
+        let out = "";
+        out += '<img src="8-1.gif" alt="loading"/>'
+        document.querySelector(".header").innerHTML = out;
+
+      case 4:
+
+        if (this.status == 200) {
+          var myArr = JSON.parse(this.responseText);
+          mudaHeader();
+          myFunction(myArr);
+        }
+        break;
     }
 
   };
@@ -32,4 +44,14 @@ document.getElementById('enviar').addEventListener("click", (event) => {
 
 })
 
-
+function mudaHeader() {
+  var saida = ""
+  saida += '<a href="#">'
+  saida += "Repositorio's<span> .com</span>"
+  saida +='</a >'
+  saida +='  <form action="">'
+  saida +='    <input id="user" type="text" placeholder="Usuario do github">'
+  saida +='      <button id="enviar">resetar</button>'
+  saida +='</form>'
+  document.querySelector(".header").innerHTML = saida;
+}
